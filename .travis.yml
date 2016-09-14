@@ -1,0 +1,49 @@
+language: java
+sudo: required
+dist: trusty
+
+env:
+  global:
+    - RELEASE_VERSION="1.0.0"
+    - RELEASE_PLACEHOLDER="@release.number@"
+    - BUILD_PLACEHOLDER="@build.number@"
+
+before_install:
+  - sudo apt-key adv --keyserver keys.gnupg.net --recv 6DA70622
+  - sudo echo "deb http://downloads.ortussolutions.com/debs/noarch /" | sudo tee -a /etc/apt/sources.list.d/commandbox.list
+  - sudo apt-get update && sudo apt-get install commandbox
+  - mkdir modules
+  - mkdir modules/cfboom-util
+  - mv apidocs/  modules/cfboom-util/
+  - mv tests/ modules/cfboom-util/
+  - mv box.json modules/cfboom-util/
+  - mv DateUtils.cfc modules/cfboom-util/
+  - mv LICENSE modules/cfboom-util/
+  - mv ModuleConfig.cfc modules/cfboom-util/
+  - mv README.md modules/cfboom-util/
+
+install:
+  # create app 2x to ensure no time outs
+  - box coldbox create app
+  - box coldbox create app
+  # install coldbox 2x to ensure no time outs. It skips if coldbox is already installed.
+  - box install coldbox
+  - box install coldbox
+  # install testbox 2x to ensure no time outs. It skips if testbox is already installed.
+  - box install testbox
+  - box install testbox
+  - box server start port=45123 openBrowser=false
+
+before_script:
+  - curl http://localhost:45123/
+
+script: > 
+    testResults="echo $(box testbox run runner=http://localhost:45123/modules/cfboom-util/tests/runner.cfm)";
+    echo "$testResults";
+    if grep -i "\[Failures: [1-9][0-9]\?[0-9]\?\]\|\[Errors: [1-9][0-9]\?[0-9]\?\]\|<t[^>]*>\|<b[^>]*>" <<< $testResults;  then exit 1; fi
+
+after_success:
+  - sudo sed -i "s/$RELEASE_PLACEHOLDER/${RELEASE_VERSION}/g;" 'modules/cfboom-util/box.json'
+  - sleep 2
+  - sudo sed -i "s/$BUILD_PLACEHOLDER/${TRAVIS_BUILD_NUMBER}/g" 'modules/cfboom-util/box.json'
+  - sleep 2
