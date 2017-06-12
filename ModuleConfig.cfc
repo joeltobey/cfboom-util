@@ -44,6 +44,7 @@ component {
 
         // Binder Mappings
         binder.map("DateUtils@cfboomUtil").to("cfboom.util.DateUtils");
+        binder.map("StringUtils@cfboomUtil").to("cfboom.util.StringUtils");
     }
 
     /**
