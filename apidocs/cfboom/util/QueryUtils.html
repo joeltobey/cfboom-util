@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>DateUtils</title>
+	<title>QueryUtils</title>
 	<meta name="keywords" content="cfboom.util.concurrent.Callable interface">
 	<!-- common assets -->
 	
@@ -96,7 +96,7 @@ $(document).ready(function() {
 	      	</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="../../index.html?cfboom/util/DateUtils.html" target="_top">
+				<li><a href="../../index.html?cfboom/util/QueryUtils.html" target="_top">
 					<i class="glyphicon glyphicon-fullscreen"></i> Frames
 					</a>
 				</li>
@@ -122,7 +122,7 @@ $(document).ready(function() {
 
 Class
 
- DateUtils</h2>
+ QueryUtils</h2>
 
 
 
@@ -147,7 +147,7 @@ Class
 
 <!-- Inheritance Tree-->
 <pre style="background:white">lucee.Component
-    <img src="../../resources/inherit.gif" alt="extended by ">cfboom.util.DateUtils
+    <img src="../../resources/inherit.gif" alt="extended by ">cfboom.util.QueryUtils
 </pre>
 
 
@@ -162,7 +162,7 @@ Class
 
 
 <div id="class-hint">
-	<p>Miscellaneous date utility methods.</p>
+	<p>Query utility methods.</p>
 </div>
 
 
@@ -203,7 +203,7 @@ Class
 			<li class="label label-danger label-annotations">
 				displayname 
 				
-				: Class DateUtils		
+				: Class QueryUtils		
 				
 			</li>
 			&nbsp;
@@ -290,7 +290,7 @@ Class
 		<tr>
 			
 			<td>
-				<strong><a href="DateUtils.html#init()">init</A></strong>()
+				<strong><a href="QueryUtils.html#init()">init</A></strong>()
 				<br>
 				
 			</td>
@@ -316,10 +316,10 @@ Class
 	
 	<tr>
 		<td align="right" valign="top" width="1%">
-			<code>string</code>
+			<code>query</code>
 		</td>
 		<td>
-			<strong><a href="DateUtils.html#formatIso8601Date()">formatIso8601Date</A></strong>(date datetime, [boolean convertToUTC='true'], [string format='yyyy-MM-dd'T'HH:mm:ss.SSS'Z''])
+			<strong><a href="QueryUtils.html#getBy()">getBy</A></strong>(query q, string name, any value, string sqlType)
 			<br>
 			
 		</td>
@@ -329,10 +329,23 @@ Class
 	
 	<tr>
 		<td align="right" valign="top" width="1%">
-			<code>datetime</code>
+			<code>query</code>
 		</td>
 		<td>
-			<strong><a href="DateUtils.html#parseIso8601Date()">parseIso8601Date</A></strong>(string dateString, [string format='yyyy-MM-dd'T'HH:mm:ss.SSS'Z''])
+			<strong><a href="QueryUtils.html#getById()">getById</A></strong>(query q, any id, [string sqlType='cf_sql_integer'])
+			<br>
+			
+		</td>
+	</tr>
+	
+	
+	
+	<tr>
+		<td align="right" valign="top" width="1%">
+			<code>query</code>
+		</td>
+		<td>
+			<strong><a href="QueryUtils.html#getLike()">getLike</A></strong>(query q, string name, any value, [string sqlType='cf_sql_varchar'])
 			<br>
 			
 		</td>
@@ -421,10 +434,10 @@ Class
 
 
 	
-	<a name="formatIso8601Date()"><!-- --></a>
-	<h3>formatIso8601Date</h3>
+	<a name="getBy()"><!-- --></a>
+	<h3>getBy</h3>
 	
-	<kbd>public string <strong>formatIso8601Date</strong>(date datetime, [boolean convertToUTC='true'], [string format='yyyy-MM-dd'T'HH:mm:ss.SSS'Z''])</kbd>
+	<kbd>public query <strong>getBy</strong>(query q, string name, any value, string sqlType)</kbd>
 	
 	<br><br>
 
@@ -442,11 +455,13 @@ Class
 		<dl>
 		<dt><strong>Parameters:</strong></dt>
 		
-		<dd><code>datetime</code></dd>
+		<dd><code>q</code></dd>
 		
-		<dd><code>convertToUTC</code></dd>
+		<dd><code>name</code></dd>
 		
-		<dd><code>format</code></dd>
+		<dd><code>value</code></dd>
+		
+		<dd><code>sqlType</code></dd>
 		
 		</dl>
 	
@@ -457,10 +472,10 @@ Class
 	<hr>
 
 	
-	<a name="parseIso8601Date()"><!-- --></a>
-	<h3>parseIso8601Date</h3>
+	<a name="getById()"><!-- --></a>
+	<h3>getById</h3>
 	
-	<kbd>public datetime <strong>parseIso8601Date</strong>(string dateString, [string format='yyyy-MM-dd'T'HH:mm:ss.SSS'Z''])</kbd>
+	<kbd>public query <strong>getById</strong>(query q, any id, [string sqlType='cf_sql_integer'])</kbd>
 	
 	<br><br>
 
@@ -478,9 +493,49 @@ Class
 		<dl>
 		<dt><strong>Parameters:</strong></dt>
 		
-		<dd><code>dateString</code></dd>
+		<dd><code>q</code></dd>
 		
-		<dd><code>format</code></dd>
+		<dd><code>id</code></dd>
+		
+		<dd><code>sqlType</code></dd>
+		
+		</dl>
+	
+
+	
+
+	</dl>
+	<hr>
+
+	
+	<a name="getLike()"><!-- --></a>
+	<h3>getLike</h3>
+	
+	<kbd>public query <strong>getLike</strong>(query q, string name, any value, [string sqlType='cf_sql_varchar'])</kbd>
+	
+	<br><br>
+
+	
+
+	
+		
+		
+	
+
+	
+	
+
+	
+		<dl>
+		<dt><strong>Parameters:</strong></dt>
+		
+		<dd><code>q</code></dd>
+		
+		<dd><code>name</code></dd>
+		
+		<dd><code>value</code></dd>
+		
+		<dd><code>sqlType</code></dd>
 		
 		</dl>
 	

@@ -18,27 +18,36 @@
  * Query utility methods.
  *
  * @auther Joel Tobey
- * @singleton
  */
-component
-    displayname="Class QueryUtils"
-    output="false"
+component singleton
+  displayname="Class QueryUtils"
+  output="false"
 {
-    public cfboom.util.QueryUtils function init() {
-        return this;
-    }
+  public cfboom.util.QueryUtils function init() {
+    return this;
+  }
 
-    public query function getById( required query q, required any id, string sqlType = "cf_sql_integer" ) {
-        return getBy(q, "id", id, sqlType);
-    }
+  public query function getById( required query q, required any id, string sqlType = "cf_sql_integer" ) {
+    return getBy(q, "id", id, sqlType);
+  }
 
-    public query function getBy( required query q, required string name, required any value, required string sqlType ) {
-        var queryService = new query();
-        queryService.setDBType( "query" );
-        queryService.setAttributes(sourceQuery=q);
-        queryService.setSql("SELECT * FROM sourceQuery WHERE #name# = :#name#");
-        queryService.addParam(name="#name#", value="#value#", cfsqltype="#sqlType#");
-        var result = queryService.execute().getResult();
-        return result;
-    }
+  public query function getBy( required query q, required string name, required any value, required string sqlType ) {
+    var queryService = new query();
+    queryService.setDBType( "query" );
+    queryService.setAttributes(sourceQuery=q);
+    queryService.setSql("SELECT * FROM sourceQuery WHERE #name# = :#name#");
+    queryService.addParam(name="#name#", value="#value#", cfsqltype="#sqlType#");
+    var result = queryService.execute().getResult();
+    return result;
+  }
+
+  public query function getLike( required query q, required string name, required any value, string sqlType = "cf_sql_varchar" ) {
+    var queryService = new query();
+    queryService.setDBType( "query" );
+    queryService.setAttributes(sourceQuery=q);
+    queryService.setSql("SELECT * FROM sourceQuery WHERE #name# = :#name#");
+    queryService.addParam(name="#name#", value="%#value#%", cfsqltype="#sqlType#");
+    var result = queryService.execute().getResult();
+    return result;
+  }
 }

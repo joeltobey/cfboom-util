@@ -18,9 +18,8 @@
  * Miscellaneous date utility methods.
  *
  * @auther Joel Tobey
- * @singleton
  */
-component
+component singleton
     displayname="Class StringUtils"
     output="false"
 {
