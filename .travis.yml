@@ -1,45 +1,20 @@
-language: java
 sudo: required
-dist: trusty
 
-env:
-  global:
-    - RELEASE_VERSION="1.1.0"
-    - RELEASE_PLACEHOLDER="@release.number@"
-    - BUILD_PLACEHOLDER="@build.number@"
+services:
+  - docker
 
 before_install:
   - sudo apt-key adv --keyserver keys.gnupg.net --recv 6DA70622
   - sudo echo "deb http://downloads.ortussolutions.com/debs/noarch /" | sudo tee -a /etc/apt/sources.list.d/commandbox.list
   - sudo apt-get update && sudo apt-get install commandbox
-  - mkdir modules
-  - mkdir modules/cfboom-util
-  - mv apidocs/  modules/cfboom-util/
-  - mv tests/ modules/cfboom-util/
-  - mv box.json modules/cfboom-util/
-  - mv DateUtils.cfc modules/cfboom-util/
-  - mv LICENSE modules/cfboom-util/
-  - mv ModuleConfig.cfc modules/cfboom-util/
-  - mv QueryUtils.cfc modules/cfboom-util/
-  - mv README.md modules/cfboom-util/
-  - mv StringUtils.cfc modules/cfboom-util/
 
 install:
-  - box coldbox create app
-  - box install coldbox
-  - box install testbox
-  - box server start port=45123 openBrowser=false
+  - docker build -t cfboom/lang .
 
 before_script:
-  - curl http://localhost:45123/
+  - docker run -d -p 8888:8888 --rm cfboom/lang:latest
 
-script: > 
-    testResults="echo $(box testbox run runner=http://localhost:45123/modules/cfboom-util/tests/runner.cfm)";
+script: >
+    testResults="echo $(box testbox run runner=http://localhost:8888/modules_app/cfboom-lang/tests/runner.cfm)";
     echo "$testResults";
     if grep -i "\[Failures: [1-9][0-9]\?[0-9]\?\]\|\[Errors: [1-9][0-9]\?[0-9]\?\]\|<t[^>]*>\|<b[^>]*>" <<< $testResults;  then exit 1; fi
-
-after_success:
-  - sudo sed -i "s/$RELEASE_PLACEHOLDER/${RELEASE_VERSION}/g;" 'modules/cfboom-util/box.json'
-  - sleep 2
-  - sudo sed -i "s/$BUILD_PLACEHOLDER/${TRAVIS_BUILD_NUMBER}/g" 'modules/cfboom-util/box.json'
-  - sleep 2

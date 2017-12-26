@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2016 the original author or authors and Joel Tobey <joeltobey@gmail.com>
+ * Copyright 2017 the original author or authors and Joel Tobey <joeltobey@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +15,32 @@
  */
 
 /**
- * Miscellaneous date utility methods.
+ * Miscellaneous string utility methods.
  *
  * @auther Joel Tobey
  */
-component singleton
-    displayname="Class StringUtils"
-    output="false"
+component singleton="true"
+  displayname="Class StringUtils"
+  output="false"
 {
-    public cfboom.util.StringUtils function init() {
-        return this;
-    }
+  public cfboom.util.StringUtils function init() {
+    return this;
+  }
 
-    public string function generateUniqueId() {
-        var uuid = createObject("java", "java.util.UUID").randomUUID().toString();
-        uuid = replace(uuid,"-","","all");
-        return uuid;
-    }
+  /**
+   * Creates an UUID and removes the dashes.
+   */
+  public string function generateUniqueId() {
+    var uuid = createObject("java", "java.util.UUID").randomUUID().toString();
+    uuid = replace( uuid, "-", "", "all" );
+    return uuid;
+  }
+
+  /**
+   * Creates a random 32 string based on the numBits entered.
+   */
+  public string function getRandom( numeric numBits ) {
+    var random = createObject("java", "java.security.SecureRandom").init();
+    return createObject("java", "java.math.BigInteger").init( javaCast("int", numBits), random ).toString(32);
+  }
 }

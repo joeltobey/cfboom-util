@@ -37,15 +37,6 @@ var myDate = DateUtils.parseIso8601Date( "2016-09-14T17:01:34.000Z" );
 var myIsoDateString = DateUtils.formatIso8601Date( myDate );
 ```
 
-## StringUtils
-
-Wirebox mapping `StringUtils@cfboomUtil`
-
-```
-var StringUtils = getInstance( "StringUtils@cfboomUtil" );
-var myId = StringUtils.generateUniqueId();
-```
-
 ## QueryUtils
 
 Wirebox mapping `QueryUtils@cfboomUtil`
@@ -56,3 +47,27 @@ var recordSet1 = QueryUtils.getById( q, 123 );
 var recordSet2 = QueryUtils.getBy( q, "username", "john.doe@email.com", "cf_sql_varchar" );
 var recordSet3 = QueryUtils.getLike( q, "country", "usa" );
 ```
+
+## RetryUtils
+
+Wirebox mapping `RetryUtils@cfboomUtil`
+
+```
+var RetryUtils = getInstance( "RetryUtils@cfboomUtil" );
+var nextTimeToRetry = RetryUtils.nextRetryFromBeginning( beginningDate, previousAttempts );
+var nextTimeToRetry = RetryUtils.nextRetryFromPrevious( previousDate, previousAttempts );
+```
+
+## StringUtils
+
+Wirebox mapping `StringUtils@cfboomUtil`
+
+```
+var StringUtils = getInstance( "StringUtils@cfboomUtil" );
+var myId = StringUtils.generateUniqueId();
+var randomString = StringUtils.getRandom( 32 );
+```
+
+********************************************************************************
+Copyright Since 2016 Joel Tobey
+********************************************************************************

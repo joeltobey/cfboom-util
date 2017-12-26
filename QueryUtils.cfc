@@ -19,7 +19,7 @@
  *
  * @auther Joel Tobey
  */
-component singleton
+component singleton="true"
   displayname="Class QueryUtils"
   output="false"
 {
@@ -27,26 +27,35 @@ component singleton
     return this;
   }
 
+  /**
+   * Helper to get a record by the ID.
+   */
   public query function getById( required query q, required any id, string sqlType = "cf_sql_integer" ) {
-    return getBy(q, "id", id, sqlType);
+    return getBy( q, "id", id, sqlType );
   }
 
-  public query function getBy( required query q, required string name, required any value, required string sqlType ) {
+  /**
+   * Helper to get a record set by the specified field/value.
+   */
+  public query function getBy( required query q, required string name, required any value, string sqlType = "cf_sql_varchar" ) {
     var queryService = new query();
     queryService.setDBType( "query" );
-    queryService.setAttributes(sourceQuery=q);
-    queryService.setSql("SELECT * FROM sourceQuery WHERE #name# = :#name#");
-    queryService.addParam(name="#name#", value="#value#", cfsqltype="#sqlType#");
+    queryService.setAttributes( sourceQuery = q );
+    queryService.setSql( "SELECT * FROM sourceQuery WHERE #name# = :#name#" );
+    queryService.addParam( name="#name#", value="#value#", cfsqltype="#sqlType#" );
     var result = queryService.execute().getResult();
     return result;
   }
 
+  /**
+   * Helper to get a record set that's like the specified field/value.
+   */
   public query function getLike( required query q, required string name, required any value, string sqlType = "cf_sql_varchar" ) {
     var queryService = new query();
     queryService.setDBType( "query" );
-    queryService.setAttributes(sourceQuery=q);
-    queryService.setSql("SELECT * FROM sourceQuery WHERE #name# = :#name#");
-    queryService.addParam(name="#name#", value="%#value#%", cfsqltype="#sqlType#");
+    queryService.setAttributes( sourceQuery = q );
+    queryService.setSql( "SELECT * FROM sourceQuery WHERE #name# LIKE :#name#" );
+    queryService.addParam( name="#name#", value="%#value#%", cfsqltype="#sqlType#" );
     var result = queryService.execute().getResult();
     return result;
   }
