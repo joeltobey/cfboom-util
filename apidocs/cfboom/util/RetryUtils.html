@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>QueryUtils</title>
+	<title>RetryUtils</title>
 	<meta name="keywords" content="cfboom.util.concurrent.Callable interface">
 	<!-- common assets -->
 	
@@ -96,7 +96,7 @@ $(document).ready(function() {
 	      	</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="../../index.html?cfboom/util/QueryUtils.html" target="_top">
+				<li><a href="../../index.html?cfboom/util/RetryUtils.html" target="_top">
 					<i class="glyphicon glyphicon-fullscreen"></i> Frames
 					</a>
 				</li>
@@ -122,7 +122,7 @@ $(document).ready(function() {
 
 Class
 
- QueryUtils</h2>
+ RetryUtils</h2>
 
 
 
@@ -147,7 +147,7 @@ Class
 
 <!-- Inheritance Tree-->
 <pre style="background:white">lucee.Component
-    <img src="../../resources/inherit.gif" alt="extended by ">cfboom.util.QueryUtils
+    <img src="../../resources/inherit.gif" alt="extended by ">cfboom.util.RetryUtils
 </pre>
 
 
@@ -162,7 +162,7 @@ Class
 
 
 <div id="class-hint">
-	<p>Query utility methods.</p>
+	<p>Miscellaneous retry utility methods.</p>
 </div>
 
 
@@ -205,7 +205,7 @@ Class
 			<li class="label label-danger label-annotations">
 				displayname 
 				
-				: Class QueryUtils		
+				: Class RetryUtils		
 				
 			</li>
 			&nbsp;
@@ -292,7 +292,7 @@ Class
 		<tr>
 			
 			<td>
-				<strong><a href="QueryUtils.html#init()">init</A></strong>()
+				<strong><a href="RetryUtils.html#init()">init</A></strong>()
 				<br>
 				
 			</td>
@@ -318,13 +318,13 @@ Class
 	
 	<tr>
 		<td align="right" valign="top" width="1%">
-			<code>query</code>
+			<code>struct</code>
 		</td>
 		<td>
-			<strong><a href="QueryUtils.html#getBy()">getBy</A></strong>(query q, string name, any value, [string sqlType='cf_sql_varchar'])
+			<strong><a href="RetryUtils.html#getRetry()">getRetry</A></strong>(numeric num)
 			<br>
 			
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Helper to get a record set by the specified field/value.
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return the underlying retry logic for a specific retry.
 			
 		</td>
 	</tr>
@@ -333,13 +333,13 @@ Class
 	
 	<tr>
 		<td align="right" valign="top" width="1%">
-			<code>query</code>
+			<code>cfboom.util.datetime</code>
 		</td>
 		<td>
-			<strong><a href="QueryUtils.html#getById()">getById</A></strong>(query q, any id, [string sqlType='cf_sql_integer'])
+			<strong><a href="RetryUtils.html#nextRetryFromBeginning()">nextRetryFromBeginning</A></strong>(date beginningDate, [numeric previousAttempts='1'])
 			<br>
 			
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Helper to get a record by the ID.
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Uses the timestamp of the first attempt to evaluate the next time to retry.
 			
 		</td>
 	</tr>
@@ -348,13 +348,13 @@ Class
 	
 	<tr>
 		<td align="right" valign="top" width="1%">
-			<code>query</code>
+			<code>cfboom.util.datetime</code>
 		</td>
 		<td>
-			<strong><a href="QueryUtils.html#getLike()">getLike</A></strong>(query q, string name, any value, [string sqlType='cf_sql_varchar'])
+			<strong><a href="RetryUtils.html#nextRetryFromPrevious()">nextRetryFromPrevious</A></strong>(date previousDate, [numeric previousAttempts='1'])
 			<br>
 			
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Helper to get a record set that's like the specified field/value.
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Uses the timestamp of the previous attempt to evaluate the next time to retry.
 			
 		</td>
 	</tr>
@@ -442,15 +442,15 @@ Class
 
 
 	
-	<a name="getBy()"><!-- --></a>
-	<h3>getBy</h3>
+	<a name="getRetry()"><!-- --></a>
+	<h3>getRetry</h3>
 	
-	<kbd>public query <strong>getBy</strong>(query q, string name, any value, [string sqlType='cf_sql_varchar'])</kbd>
+	<kbd>public struct <strong>getRetry</strong>(numeric num)</kbd>
 	
 	<br><br>
 
 	
-		<p>Helper to get a record set by the specified field/value.</p>
+		<p>Return the underlying retry logic for a specific retry.</p>
 	
 
 	
@@ -465,13 +465,7 @@ Class
 		<dl>
 		<dt><strong>Parameters:</strong></dt>
 		
-		<dd><code>q</code></dd>
-		
-		<dd><code>name</code></dd>
-		
-		<dd><code>value</code></dd>
-		
-		<dd><code>sqlType</code></dd>
+		<dd><code>num</code></dd>
 		
 		</dl>
 	
@@ -482,15 +476,15 @@ Class
 	<hr>
 
 	
-	<a name="getById()"><!-- --></a>
-	<h3>getById</h3>
+	<a name="nextRetryFromBeginning()"><!-- --></a>
+	<h3>nextRetryFromBeginning</h3>
 	
-	<kbd>public query <strong>getById</strong>(query q, any id, [string sqlType='cf_sql_integer'])</kbd>
+	<kbd>public cfboom.util.datetime <strong>nextRetryFromBeginning</strong>(date beginningDate, [numeric previousAttempts='1'])</kbd>
 	
 	<br><br>
 
 	
-		<p>Helper to get a record by the ID.</p>
+		<p>Uses the timestamp of the first attempt to evaluate the next time to retry.</p>
 	
 
 	
@@ -505,30 +499,33 @@ Class
 		<dl>
 		<dt><strong>Parameters:</strong></dt>
 		
-		<dd><code>q</code></dd>
+		<dd><code>beginningDate</code></dd>
 		
-		<dd><code>id</code></dd>
-		
-		<dd><code>sqlType</code></dd>
+		<dd><code>previousAttempts</code> - The number of times this process has been attempted (from 1 to 32).</dd>
 		
 		</dl>
 	
 
+	
+		<dl>
+			<dt><strong>Returns:</strong></dt>
+			<dd>the next time to retry.</dd>
+		</dl>
 	
 
 	</dl>
 	<hr>
 
 	
-	<a name="getLike()"><!-- --></a>
-	<h3>getLike</h3>
+	<a name="nextRetryFromPrevious()"><!-- --></a>
+	<h3>nextRetryFromPrevious</h3>
 	
-	<kbd>public query <strong>getLike</strong>(query q, string name, any value, [string sqlType='cf_sql_varchar'])</kbd>
+	<kbd>public cfboom.util.datetime <strong>nextRetryFromPrevious</strong>(date previousDate, [numeric previousAttempts='1'])</kbd>
 	
 	<br><br>
 
 	
-		<p>Helper to get a record set that's like the specified field/value.</p>
+		<p>Uses the timestamp of the previous attempt to evaluate the next time to retry.</p>
 	
 
 	
@@ -543,17 +540,18 @@ Class
 		<dl>
 		<dt><strong>Parameters:</strong></dt>
 		
-		<dd><code>q</code></dd>
+		<dd><code>previousDate</code></dd>
 		
-		<dd><code>name</code></dd>
-		
-		<dd><code>value</code></dd>
-		
-		<dd><code>sqlType</code></dd>
+		<dd><code>previousAttempts</code> - The number of times this process has been attempted (from 1 to 32).</dd>
 		
 		</dl>
 	
 
+	
+		<dl>
+			<dt><strong>Returns:</strong></dt>
+			<dd>the next time to retry.</dd>
+		</dl>
 	
 
 	</dl>

@@ -20,46 +20,35 @@
 component
   extends="coldbox.system.testing.BaseTestCase"
   appMapping="/root"
-  displayname="Class DateUtilsTest"
+  displayname="Class StringUtilsTest"
   output="false"
 {
   // this will run once after initialization and before setUp()
   public void function beforeTests() {
     super.beforeTests();
-    variables['DateUtils'] = getInstance( "DateUtils@cfboomUtil" );
+    variables['StringUtils'] = getInstance( "StringUtils@cfboomUtil" );
   }
 
   // this will run once after all tests have been run
   public void function afterTests() {
-    structDelete( variables, "DateUtils" );
+    structDelete( variables, "StringUtils" );
     super.afterTests();
   }
 
   /**
    * @Test
    */
-  public void function testParseIso8601Date() {
-    var datetime = createDateTime( 2016, 3, 15, 21, 44, 32 );
-    var datetimeUTC = dateConvert( "local2utc", datetime );
-    var dateString = dateFormat( datetimeUTC, "YYYY-mm-dd" ) &
-        "T" &
-        timeFormat( datetimeUTC, "HH:mm:ss" ) & ".000" &
-        "Z";
-
-    assertEquals( datetimeUTC, DateUtils.parseIso8601Date( dateString ) );
+  public void function testGenerateUniqueId() {
+    var result = StringUtils.generateUniqueId();
+    assertEquals( 32, len( result ) );
   }
 
   /**
    * @Test
    */
-  public void function testFormatIso8601Date() {
-    var datetime = createDateTime( 2016, 3, 15, 21, 44, 32 );
-    var datetimeUTC = dateConvert( "local2utc", datetime );
-    var expected = dateFormat( datetimeUTC, "YYYY-mm-dd" ) &
-        "T" &
-        timeFormat( datetimeUTC, "HH:mm:ss" ) & ".000" &
-        "Z";
-
-    assertEquals( expected, DateUtils.formatIso8601Date( datetime ) );
+  public void function testGetRandom() {
+    var result = StringUtils.getRandom( 12 );
+    assertTrue( isValid( "string", result ) );
   }
+
 }

@@ -1,6 +1,6 @@
 {
     "name":"<cfboom/> util",
-    "version":"1.1.0",
+    "version":"1.2.0",
     "author":"Joel Tobey <joeltobey@gmail.com>",
     "slug":"cfboom-util",
     "type":"modules",
@@ -10,7 +10,7 @@
         "type":"git",
         "url":"https://github.com/joeltobey/cfboom-util"
     },
-    "location": "https://github.com/joeltobey/cfboom-util/releases/download/v1.1.0/cfboom-util-v1.1.0.zip",
+    "location":"https://github.com/joeltobey/cfboom-util/releases/download/v1.2.0/cfboom-util-v1.2.0.zip",
     "shortDescription":"The cfboom-util module provides core utilities used with cfboom",
     "license":[
         {

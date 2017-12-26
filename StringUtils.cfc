@@ -19,7 +19,7 @@
  *
  * @auther Joel Tobey
  */
-component singleton
+component singleton="true"
   displayname="Class StringUtils"
   output="false"
 {
@@ -27,14 +27,20 @@ component singleton
     return this;
   }
 
+  /**
+   * Creates an UUID and removes the dashes.
+   */
   public string function generateUniqueId() {
     var uuid = createObject("java", "java.util.UUID").randomUUID().toString();
-    uuid = replace(uuid,"-","","all");
+    uuid = replace( uuid, "-", "", "all" );
     return uuid;
   }
 
+  /**
+   * Creates a random 32 string based on the numBits entered.
+   */
   public string function getRandom( numeric numBits ) {
     var random = createObject("java", "java.security.SecureRandom").init();
-    return createObject("java", "java.math.BigInteger").init(javaCast("int", numBits), random).toString(32);
+    return createObject("java", "java.math.BigInteger").init( javaCast("int", numBits), random ).toString(32);
   }
 }
