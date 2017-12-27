@@ -26,11 +26,20 @@ component
   // this will run once after initialization and before setUp()
   public void function beforeTests() {
     super.beforeTests();
+    var binder = getWirebox().getBinder();
+    binder.map( "loaderUsingJavaLoader@JavaLoaderTests" )
+          .to( "cfboom.util.JavaLoader" )
+          .initWith( useJavaLoader = true );
+    binder.map( "loaderWithOutUsingJavaLoader@JavaLoaderTests" )
+          .to( "cfboom.util.JavaLoader" );
   }
 
   // this will run once after all tests have been run
   public void function afterTests() {
     super.afterTests();
+    var binder = getWirebox().getBinder();
+    binder.unmap( "loaderUsingJavaLoader@JavaLoaderTests" );
+    binder.unmap( "loaderWithOutUsingJavaLoader@JavaLoaderTests" );
   }
 
   /**
@@ -63,6 +72,24 @@ component
     assertFalse( javaLoader.isUsingJavaLoader() );
     var obj = javaLoader.create( "java.lang.Object" );
     assertTrue( isObject( obj ) );
+  }
+
+  /**
+   * @Test
+   */
+  public void function testBinderWithOutJavaLoader() {
+    var loader = getInstance( "loaderWithOutUsingJavaLoader@JavaLoaderTests" );
+    assertTrue( isInstanceOf( loader, "cfboom.util.JavaLoader" ) );
+    assertFalse( loader.isUsingJavaLoader(), loader.toString() & " should not be using `cbjavaloader`" );
+  }
+
+  /**
+   * @Test
+   */
+  public void function testBinderWithJavaLoader() {
+    var loader = getInstance( "loaderUsingJavaLoader@JavaLoaderTests" );
+    assertTrue( isInstanceOf( loader, "cfboom.util.JavaLoader" ) );
+    assertTrue( loader.isUsingJavaLoader(), loader.toString() & " should be using `cbjavaloader`" );
   }
 
 }

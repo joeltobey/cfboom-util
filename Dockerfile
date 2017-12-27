@@ -9,9 +9,11 @@ RUN cd /var/www && \
     box coldbox create app myapp && \
     box install testbox && \
     box install docbox && \
+    box install cfboom-lang && \
     box install cbjavaloader && \
     cd modules_app/ && \
     mkdir cfboom-util/
 
+COPY docker/Coldbox.cfc /var/www/config/Coldbox.cfc
 COPY docker/generateDocs.cfm /var/www/generateDocs.cfm
 COPY . /var/www/modules_app/cfboom-util/
