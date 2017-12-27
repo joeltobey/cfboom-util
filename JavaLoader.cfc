@@ -21,10 +21,12 @@
  * @auther Joel Tobey
  */
 component
+  extends="cfboom.lang.Object"
   displayname="Class JavaLoader"
   output="false"
 {
   property name="wirebox" inject="wirebox";
+  property name="log" inject="logbox:logger:{this}";
 
   /**
    * Constructor.
@@ -34,6 +36,18 @@ component
   public cfboom.util.JavaLoader function init( boolean useJavaLoader = false ) {
     variables['_useJavaLoader'] = useJavaLoader;
     return this;
+  }
+
+  /**
+   * Runs after Dependency Injection is complete.
+   */
+  public void function onDIComplete() {
+    if ( _useJavaLoader ) {
+      log.debug( this.toString() & " configured using `cbjavaloader`" );
+      variables['_javaLoader'] = wirebox.getInstance( "loader@cbjavaloader" );
+    } else {
+      log.debug( this.toString() & " configured using `createObject()`" );
+    }
   }
 
   /**
@@ -51,14 +65,6 @@ component
    */
   public boolean function isUsingJavaLoader() {
     return _useJavaLoader;
-  }
-
-  /**
-   * Runs after Dependency Injection is complete.
-   */
-  public void function onDIComplete() {
-    if ( _useJavaLoader )
-      variables['_javaLoader'] = wirebox.getInstance( "loader@cbjavaloader" );
   }
 
   /**

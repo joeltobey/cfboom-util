@@ -39,7 +39,7 @@ component
   // Auto-map models
   this.autoMapModels      = false;
   // Module Dependencies
-  this.dependencies       = [ ];
+  this.dependencies       = [ "cfboom-lang" ];
 
   function configure(){
 
