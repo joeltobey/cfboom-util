@@ -9,6 +9,7 @@ RUN cd /var/www && \
     box coldbox create app myapp && \
     box install testbox && \
     box install docbox && \
+    box install cbjavaloader && \
     cd modules_app/ && \
     mkdir cfboom-util/
 
