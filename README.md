@@ -37,6 +37,25 @@ var myDate = DateUtils.parseIso8601Date( "2016-09-14T17:01:34.000Z" );
 var myIsoDateString = DateUtils.formatIso8601Date( myDate );
 ```
 
+## JavaLoader
+
+Wirebox mapping `JavaLoader@cfboomUtil`
+
+```
+// Use createObject()
+var javaLoader = getInstance( "JavaLoader@cfboomUtil" );
+var obj1 = javaLoader.create("java.lang.Object").init();
+
+// Use cbjavaloader
+var javaLoader = getInstance( name="JavaLoader@cfboomUtil", initArguments = { useJavaLoader = true } );
+var obj2 = javaLoader.create("java.lang.Object").init();
+
+// Use cbjavaloader
+var javaLoader = getInstance( "JavaLoader@cfboomUtil" );
+javaLoader.setUseJavaLoader( true );
+var obj3 = javaLoader.create("java.lang.Object").init();
+```
+
 ## QueryUtils
 
 Wirebox mapping `QueryUtils@cfboomUtil`

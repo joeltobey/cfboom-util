@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Joel Tobey <joeltobey@gmail.com>
+ * Copyright 2016-2017 Joel Tobey <joeltobey@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,46 +17,49 @@
 /**
  * @author Joel Tobey
  */
-component {
+component
+  output="false"
+{
+  // Module Properties
+  this.title              = "cfboom util";
+  this.author             = "Joel Tobey";
+  this.webURL             = "https://github.com/joeltobey/cfboom-util";
+  this.description        = "The cfboom-util module provides core utilities used with cfboom";
+  this.version            = "1.3.0";
+  // If true, looks for views in the parent first, if not found, then in the module. Else vice-versa
+  this.viewParentLookup   = true;
+  // If true, looks for layouts in the parent first, if not found, then in module. Else vice-versa
+  this.layoutParentLookup = true;
+  // Module Entry Point
+  this.entryPoint         = "cfboom/util";
+  // Model Namespace
+  this.modelNamespace     = "cfboomUtil";
+  // CF Mapping
+  this.cfmapping          = "cfboom/util";
+  // Auto-map models
+  this.autoMapModels      = false;
+  // Module Dependencies
+  this.dependencies       = [ ];
 
-    // Module Properties
-    this.title              = "cfboom util";
-    this.author             = "Joel Tobey";
-    this.webURL             = "https://github.com/joeltobey/cfboom-util";
-    this.description        = "The cfboom-util module provides core utilities used with cfboom";
-    this.version            = "1.2.0";
-    // If true, looks for views in the parent first, if not found, then in the module. Else vice-versa
-    this.viewParentLookup   = true;
-    // If true, looks for layouts in the parent first, if not found, then in module. Else vice-versa
-    this.layoutParentLookup = true;
-    // Module Entry Point
-    this.entryPoint         = "cfboom/util";
-    // Model Namespace
-    this.modelNamespace     = "cfboomUtil";
-    // CF Mapping
-    this.cfmapping          = "cfboom/util";
-    // Auto-map models
-    this.autoMapModels      = false;
-    // Module Dependencies
-    this.dependencies       = [ ];
+  function configure(){
 
-    function configure(){
+    // Binder Mappings
+    binder.map("DateUtils@cfboomUtil").to("cfboom.util.DateUtils");
+    binder.map("JavaLoader@cfboomUtil").to("cfboom.util.JavaLoader");
+    binder.map("QueryUtils@cfboomUtil").to("cfboom.util.QueryUtils");
+    binder.map("RetryUtils@cfboomUtil").to("cfboom.util.RetryUtils");
+    binder.map("StringUtils@cfboomUtil").to("cfboom.util.StringUtils");
 
-        // Binder Mappings
-        binder.map("DateUtils@cfboomUtil").to("cfboom.util.DateUtils");
-        binder.map("RetryUtils@cfboomUtil").to("cfboom.util.RetryUtils");
-        binder.map("StringUtils@cfboomUtil").to("cfboom.util.StringUtils");
-        binder.map("QueryUtils@cfboomUtil").to("cfboom.util.QueryUtils");
-    }
+  }
 
-    /**
-     * Fired when the module is registered and activated.
-     */
-    function onLoad(){}
+  /**
+   * Fired when the module is registered and activated.
+   */
+  function onLoad(){}
 
-    /**
-     * Fired when the module is unregistered and unloaded
-     */
-    function onUnload(){}
+  /**
+   * Fired when the module is unregistered and unloaded
+   */
+  function onUnload(){}
 
 }
