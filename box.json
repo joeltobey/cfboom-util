@@ -33,9 +33,7 @@
             "version":">2018"
         }
     ],
-    "dependencies":{
-        "cfboom":"^2.0.0"
-    },
+    "dependencies":{},
     "ignore":[
         "**/.*",
         "tests",
