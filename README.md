@@ -10,11 +10,11 @@ Apache License, Version 2.0.
 - https://github.com/joeltobey/cfboom-util/wiki
 
 ##SYSTEM REQUIREMENTS
-- Lucee 4.5+
-- ColdFusion 9+
+- Lucee 5.3+
+- ColdFusion 2018+
 
 # INSTRUCTIONS
-Just drop into your **modules** folder or use CommandBox to install
+Ensure `cfboom` is already installed and use CommandBox to install
 
 `box install cfboom-util`
 
@@ -29,39 +29,39 @@ Check out the API Docs for all the possible functions.
 
 ## DateUtils
 
-Wirebox mapping `DateUtils@cfboomUtil`
+Wirebox mapping `DateUtils@cfboom-util`
 
 ```
-var DateUtils = getInstance( "DateUtils@cfboomUtil" );
+var DateUtils = getInstance( "DateUtils@cfboom-util" );
 var myDate = DateUtils.parseIso8601Date( "2016-09-14T17:01:34.000Z" );
 var myIsoDateString = DateUtils.formatIso8601Date( myDate );
 ```
 
 ## JavaLoader
 
-Wirebox mapping `JavaLoader@cfboomUtil`
+Wirebox mapping `JavaLoader@cfboom-util`
 
 ```
 // Use createObject()
-var javaLoader = getInstance( "JavaLoader@cfboomUtil" );
+var javaLoader = getInstance( "JavaLoader@cfboom-util" );
 var obj1 = javaLoader.create("java.lang.Object").init();
 
 // Use cbjavaloader
-var javaLoader = getInstance( name="JavaLoader@cfboomUtil", initArguments = { useJavaLoader = true } );
+var javaLoader = getInstance( name="JavaLoader@cfboom-util", initArguments = { useJavaLoader = true } );
 var obj2 = javaLoader.create("java.lang.Object").init();
 
 // Use cbjavaloader
-var javaLoader = getInstance( "JavaLoader@cfboomUtil" );
+var javaLoader = getInstance( "JavaLoader@cfboom-util" );
 javaLoader.setUseJavaLoader( true );
 var obj3 = javaLoader.create("java.lang.Object").init();
 ```
 
 ## QueryUtils
 
-Wirebox mapping `QueryUtils@cfboomUtil`
+Wirebox mapping `QueryUtils@cfboom-util`
 
 ```
-var QueryUtils = getInstance( "QueryUtils@cfboomUtil" );
+var QueryUtils = getInstance( "QueryUtils@cfboom-util" );
 var recordSet1 = QueryUtils.getById( q, 123 );
 var recordSet2 = QueryUtils.getBy( q, "username", "john.doe@email.com", "cf_sql_varchar" );
 var recordSet3 = QueryUtils.getLike( q, "country", "usa" );
@@ -69,20 +69,20 @@ var recordSet3 = QueryUtils.getLike( q, "country", "usa" );
 
 ## RetryUtils
 
-Wirebox mapping `RetryUtils@cfboomUtil`
+Wirebox mapping `RetryUtils@cfboom-util`
 
 ```
-var RetryUtils = getInstance( "RetryUtils@cfboomUtil" );
+var RetryUtils = getInstance( "RetryUtils@cfboom-util" );
 var nextTimeToRetry = RetryUtils.nextRetryFromBeginning( beginningDate, previousAttempts );
 var nextTimeToRetry = RetryUtils.nextRetryFromPrevious( previousDate, previousAttempts );
 ```
 
 ## StringUtils
 
-Wirebox mapping `StringUtils@cfboomUtil`
+Wirebox mapping `StringUtils@cfboom-util`
 
 ```
-var StringUtils = getInstance( "StringUtils@cfboomUtil" );
+var StringUtils = getInstance( "StringUtils@cfboom-util" );
 var myId = StringUtils.generateUniqueId();
 var randomString = StringUtils.getRandom( 32 );
 ```
