@@ -1,7 +1,7 @@
 FROM joeltobey/lucee:5.3
 
 ARG RUN_TESTS=true
-ARG TEST_RUNNER_URL=http://localhost:8888/modules/cfboom/modules/util/tests/runner.cfm?&directory=tests.specs&recurse=true&reporter=json&verbose=true
+ARG TEST_RUNNER_URL=http://localhost:8888/modules/cfboom/modules/cfboom-util/tests/runner.cfm?&directory=tests.specs&recurse=true&reporter=json&verbose=true
 
 # Copy file system
 COPY docker/build/ $BUILD_DIR/
