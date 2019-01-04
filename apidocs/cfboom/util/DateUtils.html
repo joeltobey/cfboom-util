@@ -144,10 +144,19 @@ Class
 	
 	
 
+	
+		
+		
+			
+		
+	
+	
+
 
 <!-- Inheritance Tree-->
 <pre style="background:white">lucee.Component
-    <img src="../../resources/inherit.gif" alt="extended by ">cfboom.util.DateUtils
+    <img src="../../resources/inherit.gif" alt="extended by ">cfboom.lang.Object
+      <img src="../../resources/inherit.gif" alt="extended by ">cfboom.util.DateUtils
 </pre>
 
 
@@ -179,33 +188,9 @@ Class
 			
 			
 			<li class="label label-danger label-annotations">
-				singleton 
+				singleton
 				
-				: true		
-				
-			</li>
-			&nbsp;
-			
-		
-			
-			
-			<li class="label label-danger label-annotations">
-				output 
-				
-				: false		
-				
-			</li>
-			&nbsp;
-			
-		
-			
-		
-			
-			
-			<li class="label label-danger label-annotations">
-				displayname 
-				
-				: Class DateUtils		
+				: true
 				
 			</li>
 			&nbsp;
@@ -214,28 +199,9 @@ Class
 			
 			
 			<li class="label label-danger label-annotations">
-				synchronized 
+				output
 				
-				: false		
-				
-			</li>
-			&nbsp;
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-			
-			<li class="label label-danger label-annotations">
-				accessors 
-				
-				: false		
+				: false
 				
 			</li>
 			&nbsp;
@@ -246,9 +212,9 @@ Class
 			
 			
 			<li class="label label-danger label-annotations">
-				auther 
+				displayname
 				
-				: Joel Tobey		
+				: Class DateUtils
 				
 			</li>
 			&nbsp;
@@ -257,9 +223,52 @@ Class
 			
 			
 			<li class="label label-danger label-annotations">
-				persistent 
+				synchronized
 				
-				: false		
+				: false
+				
+			</li>
+			&nbsp;
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+			
+			<li class="label label-danger label-annotations">
+				accessors
+				
+				: false
+				
+			</li>
+			&nbsp;
+			
+		
+			
+		
+			
+			
+			<li class="label label-danger label-annotations">
+				auther
+				
+				: Joel Tobey
+				
+			</li>
+			&nbsp;
+			
+		
+			
+			
+			<li class="label label-danger label-annotations">
+				persistent
+				
+				: false
 				
 			</li>
 			&nbsp;
@@ -356,6 +365,98 @@ Class
 	
 
 	&nbsp;
+	<a name="methods_inherited_from_class_cfboom.lang.Object"><!-- --></a>
+	<table class="table table-hover table-bordered">
+		<tr class="info">
+			<th align="left">
+				<strong>Methods inherited from class <kbd>cfboom.lang.Object</kbd></strong>
+			</th>
+		</tr>
+		<tr>
+			<td>
+				
+				
+				
+					
+					
+					
+					
+					
+					
+				
+					
+					
+				
+					
+					
+					
+						
+					
+					
+					
+					
+				
+					
+					
+					
+						
+					
+					
+					
+					
+				
+					
+					
+					
+						
+					
+					
+					
+					
+				
+					
+					
+					
+						
+					
+					
+					
+					
+				
+					
+					
+					
+						
+					
+					
+					
+					
+				
+					
+					
+				
+					
+					
+					
+						
+					
+					
+					
+					
+				
+
+				
+					<a href="../../cfboom/lang/Object.html#$equals()">$equals</a>, <a href="../../cfboom/lang/Object.html#getComponentName()">getComponentName</a>, <a href="../../cfboom/lang/Object.html#getIdentityHashCode()">getIdentityHashCode</a>, <a href="../../cfboom/lang/Object.html#getIdentityString()">getIdentityString</a>, <a href="../../cfboom/lang/Object.html#getMeta()">getMeta</a>, <a href="../../cfboom/lang/Object.html#hashCode()">hashCode</a>, <a href="../../cfboom/lang/Object.html#toString()">toString</a>
+				
+			</td>
+		</tr>
+	</table>
+
+	
+
+	
+
+	&nbsp;
 	<a name="methods_inherited_from_class_lucee.Component"><!-- --></a>
 	<table class="table table-hover table-bordered">
 		<tr class="info">
@@ -368,7 +469,7 @@ Class
 				
 				
 				
-				
+
 				
 					<span class="label label-warning"><em>None</em></span>
 				
@@ -428,14 +529,19 @@ Class
 
 	
 	<a name="formatIso8601Date()"><!-- --></a>
-	<h3>formatIso8601Date</h3>
-	
+	<h3>
+		formatIso8601Date
+		
+	</h3>
+
 	<kbd>public string <strong>formatIso8601Date</strong>(date datetime, [boolean convertToUTC='true'], [string format='yyyy-MM-dd'T'HH:mm:ss.SSS'Z''])</kbd>
-	
+
 	<br><br>
 
 	
 		<p>Takes a date and converts it into an ISO 8601 date string.</p>
+	
+
 	
 
 	
@@ -461,19 +567,26 @@ Class
 
 	
 
+	
+
 	</dl>
 	<hr>
 
 	
 	<a name="parseIso8601Date()"><!-- --></a>
-	<h3>parseIso8601Date</h3>
-	
+	<h3>
+		parseIso8601Date
+		
+	</h3>
+
 	<kbd>public cfboom.util.datetime <strong>parseIso8601Date</strong>(string dateString, [string format='yyyy-MM-dd'T'HH:mm:ss.SSS'Z''])</kbd>
-	
+
 	<br><br>
 
 	
 		<p>Takes a string in ISO 8601 date format and returns a date.</p>
+	
+
 	
 
 	
@@ -493,6 +606,8 @@ Class
 		<dd><code>format</code></dd>
 		
 		</dl>
+	
+
 	
 
 	

@@ -21,15 +21,15 @@
 --->
 <cfscript>
   strategy = new docbox.strategy.api.HTMLAPIStrategy(
-    expandPath("/modules_app/cfboom-util/apidocs"),
+    expandPath("/modules/cfboom/modules/cfboom-util/apidocs"),
     "&ltcfboom/&gt util"
   );
 
   docbox = new docbox.DocBox( strategy );
 
   docbox.generate(
-    source  = expandPath( "/modules_app/cfboom-util" ),
+    source  = expandPath( "/modules/cfboom/modules/cfboom-util" ),
     mapping = "cfboom.util",
-    excludes = "tests|ModuleConfig.cfc"
+    excludes = "tests|ModuleConfig.cfc|Coldbox.cfc"
   );
 </cfscript>

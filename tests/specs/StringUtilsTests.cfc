@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2016-2017 the original author or authors and Joel Tobey <joeltobey@gmail.com>
+ * Copyright 2016-2019 the original author or authors and Joel Tobey <joeltobey@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ component
   // this will run once after initialization and before setUp()
   public void function beforeTests() {
     super.beforeTests();
-    variables['StringUtils'] = getInstance( "StringUtils@cfboomUtil" );
+    variables['StringUtils'] = getInstance( "StringUtils@cfboom-util" );
   }
 
   // this will run once after all tests have been run
@@ -50,5 +50,4 @@ component
     var result = StringUtils.getRandom( 12 );
     assertTrue( isValid( "string", result ) );
   }
-
 }

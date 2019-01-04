@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2016-2017 the original author or authors and Joel Tobey <joeltobey@gmail.com>
+ * Copyright 2016-2019 the original author or authors and Joel Tobey <joeltobey@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ component
   // this will run once after initialization and before setUp()
   public void function beforeTests() {
     super.beforeTests();
-    variables['RetryUtils'] = getInstance( "RetryUtils@cfboomUtil" );
+    variables['RetryUtils'] = getInstance( "RetryUtils@cfboom-util" );
     variables['_startDate'] = createDateTime( 2016, 3, 15, 21, 44, 32 );
     variables['_dateArray'] = [
       createDateTime( 2016, 3, 15, 21, 45, 12 ),
@@ -89,5 +89,4 @@ component
       previous = _dateArray[i];
     }
   }
-
 }

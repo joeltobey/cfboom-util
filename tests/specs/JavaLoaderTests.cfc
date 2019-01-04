@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2016-2017 the original author or authors and Joel Tobey <joeltobey@gmail.com>
+ * Copyright 2016-2019 the original author or authors and Joel Tobey <joeltobey@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,7 +46,7 @@ component
    * @Test
    */
   public void function testWithJavaLoaderInit() {
-    var javaLoader = getInstance( name="JavaLoader@cfboomUtil", initArguments = { useJavaLoader = true } );
+    var javaLoader = getInstance( name="JavaLoader@cfboom-util", initArguments = { useJavaLoader = true } );
     assertTrue( javaLoader.isUsingJavaLoader() );
     var obj = javaLoader.create( "java.lang.Object" );
     assertTrue( isObject( obj ) );
@@ -56,7 +56,7 @@ component
    * @Test
    */
   public void function testWithJavaLoaderSetter() {
-    var javaLoader = getInstance( "JavaLoader@cfboomUtil" );
+    var javaLoader = getInstance( "JavaLoader@cfboom-util" );
     assertFalse( javaLoader.isUsingJavaLoader() );
     javaLoader.setUseJavaLoader( true );
     assertTrue( javaLoader.isUsingJavaLoader() );
@@ -68,7 +68,7 @@ component
    * @Test
    */
   public void function testWithOutJavaLoader() {
-    var javaLoader = getInstance( "JavaLoader@cfboomUtil" );
+    var javaLoader = getInstance( "JavaLoader@cfboom-util" );
     assertFalse( javaLoader.isUsingJavaLoader() );
     var obj = javaLoader.create( "java.lang.Object" );
     assertTrue( isObject( obj ) );
@@ -91,5 +91,4 @@ component
     assertTrue( isInstanceOf( loader, "cfboom.util.JavaLoader" ) );
     assertTrue( loader.isUsingJavaLoader(), loader.toString() & " should be using `cbjavaloader`" );
   }
-
 }
