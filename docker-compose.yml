@@ -10,4 +10,4 @@ services:
     ports:
     - "8888:8888"
     volumes:
-    - .:/var/www/modules/cfboom/modules/util
+    - .:/var/www/modules/cfboom/modules/cfboom-util

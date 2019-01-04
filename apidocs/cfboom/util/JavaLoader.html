@@ -144,10 +144,19 @@ Class
 	
 	
 
+	
+		
+		
+			
+		
+	
+	
+
 
 <!-- Inheritance Tree-->
 <pre style="background:white">lucee.Component
-    <img src="../../resources/inherit.gif" alt="extended by ">cfboom.util.JavaLoader
+    <img src="../../resources/inherit.gif" alt="extended by ">cfboom.lang.Object
+      <img src="../../resources/inherit.gif" alt="extended by ">cfboom.util.JavaLoader
 </pre>
 
 
@@ -180,52 +189,9 @@ where each configuration indicates whether it uses `cbjavaloader` or not.</p>
 			
 			
 			<li class="label label-danger label-annotations">
-				output 
+				output
 				
-				: false		
-				
-			</li>
-			&nbsp;
-			
-		
-			
-		
-			
-			
-			<li class="label label-danger label-annotations">
-				displayname 
-				
-				: Class JavaLoader		
-				
-			</li>
-			&nbsp;
-			
-		
-			
-			
-			<li class="label label-danger label-annotations">
-				synchronized 
-				
-				: false		
-				
-			</li>
-			&nbsp;
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-			
-			<li class="label label-danger label-annotations">
-				accessors 
-				
-				: false		
+				: false
 				
 			</li>
 			&nbsp;
@@ -236,9 +202,9 @@ where each configuration indicates whether it uses `cbjavaloader` or not.</p>
 			
 			
 			<li class="label label-danger label-annotations">
-				auther 
+				displayname
 				
-				: Joel Tobey		
+				: Class JavaLoader
 				
 			</li>
 			&nbsp;
@@ -247,9 +213,52 @@ where each configuration indicates whether it uses `cbjavaloader` or not.</p>
 			
 			
 			<li class="label label-danger label-annotations">
-				persistent 
+				synchronized
 				
-				: false		
+				: false
+				
+			</li>
+			&nbsp;
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+			
+			<li class="label label-danger label-annotations">
+				accessors
+				
+				: false
+				
+			</li>
+			&nbsp;
+			
+		
+			
+		
+			
+			
+			<li class="label label-danger label-annotations">
+				auther
+				
+				: Joel Tobey
+				
+			</li>
+			&nbsp;
+			
+		
+			
+			
+			<li class="label label-danger label-annotations">
+				persistent
+				
+				: false
 				
 			</li>
 			&nbsp;
@@ -301,7 +310,62 @@ where each configuration indicates whether it uses `cbjavaloader` or not.</p>
 			<code>any</code>
 		</td>
 		<td>
-			<strong><a href="JavaLoader.html#wirebox()">wirebox</A></strong> 
+			<strong><a href="JavaLoader.html#log()">log</A></strong>
+			<br>
+			
+			<br><br>
+			<ul>
+			
+				
+			
+				
+				<li class="label label-default label-annotations">access = public</li>
+				
+			
+				
+			
+				
+			
+				
+				<li class="label label-default label-annotations">returntype = any</li>
+				
+			
+				
+				<li class="label label-default label-annotations">inject = logbox:logger:{this}</li>
+				
+			
+				
+			
+				
+			
+				
+			
+			</ul>
+
+		</td>
+		<td align="right" valign="top" width="1%">
+			
+		</td>
+		<td align="right" valign="top" width="1%">
+			<code>
+				true
+			</code>
+		</td>
+		<td align="right" valign="top" width="1%">
+			<code>
+				false
+			</code>
+		</td>
+	</tr>
+	
+	
+	
+	<tr>
+		<td align="right" valign="top" width="1%">
+			<code>any</code>
+		</td>
+		<td>
+			<strong><a href="JavaLoader.html#wirebox()">wirebox</A></strong>
 			<br>
 			
 			<br><br>
@@ -464,6 +528,98 @@ where each configuration indicates whether it uses `cbjavaloader` or not.</p>
 	
 
 	&nbsp;
+	<a name="methods_inherited_from_class_cfboom.lang.Object"><!-- --></a>
+	<table class="table table-hover table-bordered">
+		<tr class="info">
+			<th align="left">
+				<strong>Methods inherited from class <kbd>cfboom.lang.Object</kbd></strong>
+			</th>
+		</tr>
+		<tr>
+			<td>
+				
+				
+				
+					
+					
+					
+					
+					
+					
+				
+					
+					
+				
+					
+					
+					
+						
+					
+					
+					
+					
+				
+					
+					
+					
+						
+					
+					
+					
+					
+				
+					
+					
+					
+						
+					
+					
+					
+					
+				
+					
+					
+					
+						
+					
+					
+					
+					
+				
+					
+					
+					
+						
+					
+					
+					
+					
+				
+					
+					
+				
+					
+					
+					
+						
+					
+					
+					
+					
+				
+
+				
+					<a href="../../cfboom/lang/Object.html#$equals()">$equals</a>, <a href="../../cfboom/lang/Object.html#getComponentName()">getComponentName</a>, <a href="../../cfboom/lang/Object.html#getIdentityHashCode()">getIdentityHashCode</a>, <a href="../../cfboom/lang/Object.html#getIdentityString()">getIdentityString</a>, <a href="../../cfboom/lang/Object.html#getMeta()">getMeta</a>, <a href="../../cfboom/lang/Object.html#hashCode()">hashCode</a>, <a href="../../cfboom/lang/Object.html#toString()">toString</a>
+				
+			</td>
+		</tr>
+	</table>
+
+	
+
+	
+
+	&nbsp;
 	<a name="methods_inherited_from_class_lucee.Component"><!-- --></a>
 	<table class="table table-hover table-bordered">
 		<tr class="info">
@@ -476,7 +632,7 @@ where each configuration indicates whether it uses `cbjavaloader` or not.</p>
 				
 				
 				
-				
+
 				
 					<span class="label label-warning"><em>None</em></span>
 				
@@ -533,11 +689,59 @@ useJavaLoader.hint Flag indicating whether this loader will use `cbjavaloader` o
 
 	
 		
+		<a name="log()"><!-- --></a>
+		<h3>log</h3>
+
+		<kbd>
+			property any
+			<strong>log</strong>
+			
+		</kbd>
+
+		<br><br>
+		
+
+		<dl>
+		<dt><strong>Attributes:</strong></dt>
+		
+			
+		
+			
+			<dd><code>access</code> - public</dd>
+			
+		
+			
+			<dd><code>required</code> - false</dd>
+			
+		
+			
+		
+			
+			<dd><code>returntype</code> - any</dd>
+			
+		
+			
+			<dd><code>inject</code> - logbox:logger:{this}</dd>
+			
+		
+			
+		
+			
+		
+			
+			<dd><code>serializable</code> - true</dd>
+			
+		
+		</dl>
+
+		<hr>
+	
+		
 		<a name="wirebox()"><!-- --></a>
 		<h3>wirebox</h3>
 
 		<kbd>
-			property any 
+			property any
 			<strong>wirebox</strong>
 			
 		</kbd>
@@ -603,14 +807,19 @@ useJavaLoader.hint Flag indicating whether this loader will use `cbjavaloader` o
 
 	
 	<a name="create()"><!-- --></a>
-	<h3>create</h3>
-	
+	<h3>
+		create
+		
+	</h3>
+
 	<kbd>public any <strong>create</strong>(string class)</kbd>
-	
+
 	<br><br>
 
 	
 		<p>Creates Java objects by using either createObject() or `cbjavaloader`.</p>
+	
+
 	
 
 	
@@ -632,15 +841,20 @@ useJavaLoader.hint Flag indicating whether this loader will use `cbjavaloader` o
 
 	
 
+	
+
 	</dl>
 	<hr>
 
 	
 	<a name="isUsingJavaLoader()"><!-- --></a>
-	<h3>isUsingJavaLoader</h3>
-	
+	<h3>
+		isUsingJavaLoader
+		
+	</h3>
+
 	<kbd>public boolean <strong>isUsingJavaLoader</strong>()</kbd>
-	
+
 	<br><br>
 
 	
@@ -648,11 +862,15 @@ useJavaLoader.hint Flag indicating whether this loader will use `cbjavaloader` o
 	
 
 	
+
+	
 		
 		
 	
 
 	
+	
+
 	
 
 	
@@ -664,10 +882,13 @@ useJavaLoader.hint Flag indicating whether this loader will use `cbjavaloader` o
 
 	
 	<a name="onDIComplete()"><!-- --></a>
-	<h3>onDIComplete</h3>
-	
+	<h3>
+		onDIComplete
+		
+	</h3>
+
 	<kbd>public void <strong>onDIComplete</strong>()</kbd>
-	
+
 	<br><br>
 
 	
@@ -675,11 +896,15 @@ useJavaLoader.hint Flag indicating whether this loader will use `cbjavaloader` o
 	
 
 	
+
+	
 		
 		
 	
 
 	
+	
+
 	
 
 	
@@ -691,15 +916,20 @@ useJavaLoader.hint Flag indicating whether this loader will use `cbjavaloader` o
 
 	
 	<a name="setUseJavaLoader()"><!-- --></a>
-	<h3>setUseJavaLoader</h3>
-	
+	<h3>
+		setUseJavaLoader
+		
+	</h3>
+
 	<kbd>public void <strong>setUseJavaLoader</strong>(boolean useJavaLoader)</kbd>
-	
+
 	<br><br>
 
 	
 		<p>Convenience method of setting 'useJavaLoader' at runtime.
 useJavaLoader.hint Flag indicating whether this loader will use `cbjavaloader` of not.</p>
+	
+
 	
 
 	
@@ -717,6 +947,8 @@ useJavaLoader.hint Flag indicating whether this loader will use `cbjavaloader` o
 		<dd><code>useJavaLoader</code></dd>
 		
 		</dl>
+	
+
 	
 
 	

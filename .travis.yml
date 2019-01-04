@@ -5,3 +5,6 @@ services:
 
 install:
   - docker build -t cfboom/util --no-cache .
+
+script: >
+  echo "Build Done";

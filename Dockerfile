@@ -17,11 +17,12 @@ RUN cd /var/www && \
     cd modules/cfboom && \
     mkdir modules/ && \
     cd modules && \
-    mkdir util/
+    mkdir cfboom-util/
 
 COPY docker/Coldbox.cfc /var/www/config/Coldbox.cfc
 COPY docker/generateDocs.cfm /var/www/generateDocs.cfm
-COPY . /var/www/modules/cfboom/modules/util/
+COPY docker/Application.cfc /var/www/Application.cfc
+COPY . /var/www/modules/cfboom/modules/cfboom-util/
 
 # Run unit/integration tests
 RUN $BUILD_DIR/test.sh

@@ -4,7 +4,7 @@
     "author":"Joel Tobey <joeltobey@gmail.com>",
     "slug":"cfboom-util",
     "directory":"modules/cfboom/modules",
-    "packageDirectory":"util",
+    "packageDirectory":"cfboom-util",
     "type":"modules",
     "homepage":"https://github.com/joeltobey/cfboom-util",
     "documentation":"https://github.com/joeltobey/cfboom-util/wiki",

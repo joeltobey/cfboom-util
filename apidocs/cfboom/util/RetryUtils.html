@@ -179,33 +179,9 @@ Class
 			
 			
 			<li class="label label-danger label-annotations">
-				singleton 
+				singleton
 				
-				: true		
-				
-			</li>
-			&nbsp;
-			
-		
-			
-			
-			<li class="label label-danger label-annotations">
-				output 
-				
-				: false		
-				
-			</li>
-			&nbsp;
-			
-		
-			
-		
-			
-			
-			<li class="label label-danger label-annotations">
-				displayname 
-				
-				: Class RetryUtils		
+				: true
 				
 			</li>
 			&nbsp;
@@ -214,28 +190,9 @@ Class
 			
 			
 			<li class="label label-danger label-annotations">
-				synchronized 
+				output
 				
-				: false		
-				
-			</li>
-			&nbsp;
-			
-		
-			
-		
-			
-		
-			
-		
-			
-		
-			
-			
-			<li class="label label-danger label-annotations">
-				accessors 
-				
-				: false		
+				: false
 				
 			</li>
 			&nbsp;
@@ -246,9 +203,9 @@ Class
 			
 			
 			<li class="label label-danger label-annotations">
-				auther 
+				displayname
 				
-				: Joel Tobey		
+				: Class RetryUtils
 				
 			</li>
 			&nbsp;
@@ -257,9 +214,52 @@ Class
 			
 			
 			<li class="label label-danger label-annotations">
-				persistent 
+				synchronized
 				
-				: false		
+				: false
+				
+			</li>
+			&nbsp;
+			
+		
+			
+		
+			
+		
+			
+		
+			
+		
+			
+			
+			<li class="label label-danger label-annotations">
+				accessors
+				
+				: false
+				
+			</li>
+			&nbsp;
+			
+		
+			
+		
+			
+			
+			<li class="label label-danger label-annotations">
+				auther
+				
+				: Joel Tobey
+				
+			</li>
+			&nbsp;
+			
+		
+			
+			
+			<li class="label label-danger label-annotations">
+				persistent
+				
+				: false
 				
 			</li>
 			&nbsp;
@@ -383,7 +383,7 @@ Class
 				
 				
 				
-				
+
 				
 					<span class="label label-warning"><em>None</em></span>
 				
@@ -443,14 +443,19 @@ Class
 
 	
 	<a name="getRetry()"><!-- --></a>
-	<h3>getRetry</h3>
-	
+	<h3>
+		getRetry
+		
+	</h3>
+
 	<kbd>public struct <strong>getRetry</strong>(numeric num)</kbd>
-	
+
 	<br><br>
 
 	
 		<p>Return the underlying retry logic for a specific retry.</p>
+	
+
 	
 
 	
@@ -472,19 +477,26 @@ Class
 
 	
 
+	
+
 	</dl>
 	<hr>
 
 	
 	<a name="nextRetryFromBeginning()"><!-- --></a>
-	<h3>nextRetryFromBeginning</h3>
-	
+	<h3>
+		nextRetryFromBeginning
+		
+	</h3>
+
 	<kbd>public cfboom.util.datetime <strong>nextRetryFromBeginning</strong>(date beginningDate, [numeric previousAttempts='1'])</kbd>
-	
+
 	<br><br>
 
 	
 		<p>Uses the timestamp of the first attempt to evaluate the next time to retry.</p>
+	
+
 	
 
 	
@@ -513,19 +525,26 @@ Class
 		</dl>
 	
 
+	
+
 	</dl>
 	<hr>
 
 	
 	<a name="nextRetryFromPrevious()"><!-- --></a>
-	<h3>nextRetryFromPrevious</h3>
-	
+	<h3>
+		nextRetryFromPrevious
+		
+	</h3>
+
 	<kbd>public cfboom.util.datetime <strong>nextRetryFromPrevious</strong>(date previousDate, [numeric previousAttempts='1'])</kbd>
-	
+
 	<br><br>
 
 	
 		<p>Uses the timestamp of the previous attempt to evaluate the next time to retry.</p>
+	
+
 	
 
 	
@@ -552,6 +571,8 @@ Class
 			<dt><strong>Returns:</strong></dt>
 			<dd>the next time to retry.</dd>
 		</dl>
+	
+
 	
 
 	</dl>
