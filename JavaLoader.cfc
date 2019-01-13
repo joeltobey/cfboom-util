@@ -34,7 +34,7 @@ component
    * useJavaLoader.hint Flag indicating whether this loader will use `cbjavaloader` of not.
    */
   public cfboom.util.JavaLoader function init( boolean useJavaLoader = false ) {
-    variables['_useJavaLoader'] = useJavaLoader;
+    variables['_useJavaLoader'] = arguments.useJavaLoader;
     return this;
   }
 
@@ -42,7 +42,7 @@ component
    * Runs after Dependency Injection is complete.
    */
   public void function onDIComplete() {
-    if ( _useJavaLoader ) {
+    if ( variables._useJavaLoader ) {
       variables.log.debug( this.toString() & " configured using `cbjavaloader`" );
       variables['_javaLoader'] = variables.wirebox.getInstance( "loader@cbjavaloader" );
     } else {
@@ -57,7 +57,7 @@ component
    * useJavaLoader.hint Flag indicating whether this loader will use `cbjavaloader` of not.
    */
   public void function setUseJavaLoader( required boolean useJavaLoader ) {
-    variables['_useJavaLoader'] = useJavaLoader;
+    variables['_useJavaLoader'] = arguments.useJavaLoader;
     onDIComplete();
   }
 
@@ -65,17 +65,28 @@ component
    * Indicates whether this loader is using `cbjavaloader` or not.
    */
   public boolean function isUsingJavaLoader() {
-    return _useJavaLoader;
+    return variables._useJavaLoader;
   }
 
   /**
    * Creates Java objects by using either createObject() or `cbjavaloader`.
    */
   public any function create( required string class ) {
-    if ( _useJavaLoader ) {
+    if ( variables._useJavaLoader ) {
       return _javaLoader.create( arguments.class );
     } else {
       return createObject( "java", arguments.class );
+    }
+  }
+
+  /**
+   * Returns the ClassLoader in case you need access to it.
+   */
+  public any function getClassLoader() {
+    if ( variables._useJavaLoader ) {
+      return _javaLoader.getURLClassLoader();
+    } else {
+      return getPageContext().getClassLoader();
     }
   }
 
