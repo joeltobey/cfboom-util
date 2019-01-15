@@ -90,4 +90,10 @@ component
     }
   }
 
+  /**
+   * Returns a Java class.
+   */
+  public any function loadClass( required string class ) {
+    return getClassLoader().loadClass( arguments.class );
+  }
 }
