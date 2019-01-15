@@ -91,4 +91,13 @@ component
     assertTrue( isInstanceOf( loader, "cfboom.util.JavaLoader" ) );
     assertTrue( loader.isUsingJavaLoader(), loader.toString() & " should be using `cbjavaloader`" );
   }
+
+  /**
+   * @Test
+   */
+  public void function testLoadClass() {
+    var javaLoader = getInstance( "JavaLoader@cfboom-util" );
+    var clz = javaLoader.loadClass( "java.lang.Object" );
+    assertEquals( "java.lang.Object", clz.getName() );
+  }
 }
